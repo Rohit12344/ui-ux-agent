@@ -5,24 +5,39 @@ import About from "./_components/About";
 import Hero from "./_components/Hero";
 import { useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
+import Feature from "./_components/Feature";
+import { features } from "@/constants";
 
 function LandingPage() {
   const [silkReady, setSilkReady] = useState(false);
-  console.log("Silk Ready:", silkReady);
+
   return (
     <>
       {!silkReady && (
-        <div className="w-full! h-screen! translate-1/2 fixed! text-black container-center">
+        <div className="w-full! h-screen! translate-1/2 fixed! text-white container-center">
           <Spinner className="size-8 " />
         </div>
       )}
 
       <div
-        className={`relative flex flex-col items-center ${silkReady ? "visible" : "invisible"} `}
+        className={`relative flex flex-col items-center ${silkReady ? "visible" : "invisible"}`}
       >
         {silkReady && <NavBar />}
         <Hero setSilkReady={setSilkReady} />
-        {silkReady && <About />}
+        {silkReady && (
+          <>
+            <About />
+            {features.map((feature, index) => (
+              <Feature
+                key={index}
+                number={index + 1}
+                feature={feature.feature}
+                description={feature.description}
+                img={feature.img}
+              />
+            ))}
+          </>
+        )}
       </div>
     </>
   );

@@ -7,10 +7,10 @@ function NavBar() {
     <nav className="flex justify-between items-center container-center px-6 py-4 bg-transparent/80 backdrop-blur-lg translate-y-6 rounded-lg z-50">
       <span className="uppercase tracking-[0.6em]">Ather</span>
 
-      <div className="flex gap-12">
+      <div className="font-semibold tracking-widest hidden md:flex md:gap-12">
         <Link
           href="#philosophy"
-          className="hover:underline hover:underline-offset-2"
+          className="hover:underline hover:underline-offset-2 "
         >
           Philosophy
         </Link>

@@ -1,16 +1,18 @@
 "use client";
 
-import { easeInOut, easeOut, motion, useTransform } from "framer-motion";
+import { cubicBezier, easeInOut, motion, useTransform } from "framer-motion";
 
 function AnimatedChar({ char, index, scrollYProgress }) {
-  const staggerPosition = 800 + index * 500;
+  const staggerPosition = index * 10;
 
   const translateY = useTransform(
     scrollYProgress,
-    [0, 0.4, 1],
-    [staggerPosition, 1, 0],
+    [0, 0.5, 1],
+    [staggerPosition, 0, 0],
     {
-      ease: easeOut,
+      ease: easeInOut,
+      foregroundY: [0, 2],
+      backgroundY: [0, 0.5],
     },
   );
 

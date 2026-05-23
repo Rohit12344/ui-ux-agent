@@ -5,7 +5,8 @@ import { motion } from "motion/react";
 import { useHeroScroll } from "../_hooks/useHeroScroll";
 
 function Hero({ setSilkReady }) {
-  const { targetRef, opacity, isBackgroundActive } = useHeroScroll();
+  const { targetRef, opacity, isBackgroundActive, textOpacity } =
+    useHeroScroll();
 
   return (
     <motion.div style={{ opacity }}>
@@ -19,10 +20,10 @@ function Hero({ setSilkReady }) {
         frameLoop={isBackgroundActive ? "always" : "demand"}
       />
 
-      <header className="py-30 container-center">
-        <h1
-          className="text-[clamp(3rem,8vw,6rem)] tracking-tighter leading-[0.95] text-shadow-[5px_5px_5px_rgba(0,0,0,0.8),0_0_40px_rgba(24,192,184,0.3)] w-min mx-auto"
-          ref={targetRef}
+      <header className="py-30 container-center" ref={targetRef}>
+        <motion.h1
+          className="text-[clamp(3rem,8vw,6rem)] tracking-tighter leading-[0.95] text-shadow-[5px_5px_5px_rgba(153,106,177,0.18)] w-min mx-auto dark:text-shadow-[5px_5px_5px_rgba(0,0,0,0.8),0_0_40px_rgba(24,192,184,0.3)]"
+          style={{ opacity: textOpacity }}
         >
           <span className="uppercase block text-lg tracking-normal">
             AI Design Intelligence System
@@ -31,7 +32,7 @@ function Hero({ setSilkReady }) {
           .
           <br />
           Beyond Generation.
-        </h1>
+        </motion.h1>
       </header>
     </motion.div>
   );

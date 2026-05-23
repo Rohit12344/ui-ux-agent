@@ -1,46 +1,66 @@
 "use client";
 
-import AnimatedChar from "@/components/common/AnimatedChar";
+import AnimatedWord from "@/components/common/AnimatedWord";
 import { motion } from "motion/react";
 
-import useAboutScroll from "../_hooks/useAboutScroll";
-
 function About() {
-  const {
-    targetRef,
-    scrollYProgress,
-    scale,
-    opacity,
-    translateY,
-    headerScale,
-  } = useAboutScroll();
+  // const {
+  //   targetRef,
+  //   scrollYProgress,
+  //   scale,
+  //   opacity,
+  //   translateY,
+  //   headerScale,
+  // } = useAboutScroll();
 
   return (
     <div
-      className="h-screen w-full flex flex-col items-center justify-center text-3xl  text-[#000080] leading-9 font-medium bg-linear-to-b from-background to-white/80 gap-6  overflow-hidden"
-      ref={targetRef}
+      className="h-screen w-full flex flex-col items-center justify-center text-[clamp(1.5rem,2vw,3rem)] leading-9 font-medium bg-linear-to-b from-background  to-primary-foreground dark:to-primary overflow-hidden"
+      // ref={targetRef}
     >
-      <motion.h1
-        className="text-9xl font-bold mb-4 tracking-widest overflow-hidden"
-        style={{ scale: headerScale }}
-      >
-        {"About Ather".split("").map((char, index) => {
-          return (
-            <AnimatedChar
-              key={index}
-              char={char}
-              index={index}
-              scrollYProgress={scrollYProgress}
-            />
-          );
-        })}
-      </motion.h1>
+      <h1 className="text-2xl font-bold mb-16 tracking-widest overflow-hidden text-muted-foreground">
+        <AnimatedWord word="About Ather" />
+      </h1>
 
-      <motion.p style={{ translateY, opacity, scale }} className="max-w-[50ch]">
-        Ather is an AI collaborator that thinks like a senior product designer
-        &mdash; understanding context, critiquing ideas, and guiding you to
-        exceptional design.
-      </motion.p>
+      <p className="max-w-[45ch] overflow-hidden">
+        <AnimatedWord
+          word={"Ather is an AI collaborator that thinks like"}
+          lineHeight="2rem"
+        />
+      </p>
+
+      <p className="max-w-[45ch] overflow-hidden">
+        <AnimatedWord
+          word={"a senior product designer - understanding"}
+          lineHeight="2rem"
+        />
+      </p>
+
+      <p className="max-w-[45ch] overflow-hidden">
+        <AnimatedWord
+          word={"context, critiquing ideas, and "}
+          lineHeight="2rem"
+        />
+      </p>
+
+      <p className="max-w-[45ch] overflow-hidden">
+        <AnimatedWord
+          word={"guiding you to exceptional design."}
+          lineHeight="2rem"
+        />
+      </p>
+
+      {/* senior product designer &mdash;
+      
+      {"understanding context, critiquing ideas, and guiding you to exceptional design."
+        .split("")
+        .map((word, index) => {
+          return (
+            <p className="max-w-[45ch] overflow-hidden" key={index}>
+              <AnimatedWord key={index} word={word} lineHeight="2rem" />{" "}
+            </p>
+          );
+        })} */}
     </div>
   );
 }

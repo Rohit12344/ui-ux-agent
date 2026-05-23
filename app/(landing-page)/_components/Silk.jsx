@@ -107,7 +107,7 @@ SilkPlane.displayName = "SilkPlane";
 const Silk = ({
   speed = 5,
   scale = 1,
-  color = "#7B7481",
+  color = "#8E6B9E",
   noiseIntensity = 1.5,
   rotation = 0,
   onReady,

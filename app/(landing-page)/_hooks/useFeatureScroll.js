@@ -1,19 +1,27 @@
-import { easeOut, useScroll, useTransform } from "motion/react";
+import { cubicBezier, easeOut, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
-function useAboutScroll() {
+function useFeatureScroll() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start end", "end start"],
+    offset: ["0.2 end", "end start"],
   });
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0.96], {
     ease: easeOut,
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [0, 0, 1], {
-    ease: easeOut,
-  });
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.5, 1],
+    [0, 0, 1, 1],
+    {
+      // ease: easeOut,
+      ease: cubicBezier(0.1, 0.9, 0.2, 1),
+      foregroundY: [0, 2],
+      backgroundY: [0, 0.5],
+    },
+  );
   const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [400, 0, 0], {
     ease: easeOut,
   });
@@ -36,4 +44,4 @@ function useAboutScroll() {
   };
 }
 
-export default useAboutScroll;
+export default useFeatureScroll;

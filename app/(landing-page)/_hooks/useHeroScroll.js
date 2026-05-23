@@ -1,5 +1,5 @@
 import {
-  easeInOut,
+  easeOut,
   useMotionValueEvent,
   useScroll,
   useTransform,
@@ -14,7 +14,10 @@ export function useHeroScroll() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0], {
-    ease: easeInOut,
+    ease: easeOut,
+  });
+  const textOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0], {
+    ease: easeOut,
   });
   const [currOpacity, setCurrOpacity] = useState(opacity.current);
 
@@ -23,5 +26,5 @@ export function useHeroScroll() {
     setCurrOpacity(latest);
   });
 
-  return { targetRef, opacity, isBackgroundActive };
+  return { targetRef, opacity, isBackgroundActive, textOpacity };
 }
