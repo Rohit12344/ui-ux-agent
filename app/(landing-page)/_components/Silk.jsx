@@ -131,7 +131,7 @@ const Silk = ({
     <Canvas
       dpr={[1, 2]}
       frameloop={frameLoop}
-      className="fixed! opacity-70! -z-10! top-0 left-0 w-full h-screen!"
+      className="fixed! opacity-70! -z-100! top-0 left-0 w-full h-screen!"
     >
       <SilkPlane ref={meshRef} uniforms={uniforms} onReady={onReady} />
     </Canvas>

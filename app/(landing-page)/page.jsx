@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import Feature from "./_components/Feature";
 import { features } from "@/constants";
+import Footer from "./_components/Footer";
 
 function LandingPage() {
   const [silkReady, setSilkReady] = useState(false);
@@ -38,6 +39,7 @@ function LandingPage() {
             ))}
           </>
         )}
+        {silkReady && <Footer />}
       </div>
     </>
   );

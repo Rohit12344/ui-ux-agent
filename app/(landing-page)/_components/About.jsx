@@ -15,7 +15,7 @@ function About() {
 
   return (
     <div
-      className="h-screen w-full flex flex-col items-center justify-center text-[clamp(1.5rem,2vw,3rem)] leading-9 font-medium bg-linear-to-b from-background  to-primary-foreground dark:to-primary overflow-hidden"
+      className="h-screen w-full flex flex-col items-center justify-center text-[clamp(0.8rem,2.2vw,3rem)] leading-9 font-medium bg-background overflow-hidden z-10"
       // ref={targetRef}
     >
       <h1 className="text-2xl font-bold mb-16 tracking-widest overflow-hidden text-muted-foreground">

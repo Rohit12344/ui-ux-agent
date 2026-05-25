@@ -1,6 +1,6 @@
 "use client";
 
-import { cubicBezier, easeInOut, motion, useTransform } from "framer-motion";
+import { easeInOut, motion, useTransform } from "framer-motion";
 
 function AnimatedChar({ char, index, scrollYProgress }) {
   const staggerPosition = index * 10;

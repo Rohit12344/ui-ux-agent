@@ -1,4 +1,10 @@
-import { cubicBezier, easeOut, useScroll, useTransform } from "motion/react";
+import {
+  cubicBezier,
+  easeInOut,
+  easeOut,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { useRef } from "react";
 
 function useFeatureScroll() {
@@ -8,20 +14,26 @@ function useFeatureScroll() {
     offset: ["0.2 end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0.96], {
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0.7], {
     ease: easeOut,
+    foregroundY: [0, 2],
+    backgroundY: [0, 0.5],
   });
-  const opacity = useTransform(
+  const featureTitleOpacity = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.5, 1],
-    [0, 0, 1, 1],
+    [0, 0.5, 1],
+    [0, 1, 0.7],
     {
-      // ease: easeOut,
-      ease: cubicBezier(0.1, 0.9, 0.2, 1),
+      ease: easeInOut,
       foregroundY: [0, 2],
       backgroundY: [0, 0.5],
     },
   );
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1], {
+    ease: easeOut,
+    foregroundY: [0, 2],
+    backgroundY: [0, 0.5],
+  });
   const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [400, 0, 0], {
     ease: easeOut,
   });
@@ -29,9 +41,11 @@ function useFeatureScroll() {
   const headerScale = useTransform(
     scrollYProgress,
     [0, 0.7, 1],
-    [1.5, 1, 0.94],
+    [1.5, 1, 0.7],
     {
       ease: easeOut,
+      foregroundY: [0, 2],
+      backgroundY: [0, 0.5],
     },
   );
   return {
@@ -41,6 +55,7 @@ function useFeatureScroll() {
     opacity,
     translateY,
     headerScale,
+    featureTitleOpacity,
   };
 }
 

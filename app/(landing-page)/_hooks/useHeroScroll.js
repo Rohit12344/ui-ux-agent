@@ -10,13 +10,13 @@ export function useHeroScroll() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "0.5 start"],
   });
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0], {
-    ease: easeOut,
+    // ease: easeOut,
   });
-  const textOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0], {
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0], {
     ease: easeOut,
   });
   const [currOpacity, setCurrOpacity] = useState(opacity.current);

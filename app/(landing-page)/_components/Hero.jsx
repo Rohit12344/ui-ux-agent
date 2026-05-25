@@ -9,7 +9,11 @@ function Hero({ setSilkReady }) {
     useHeroScroll();
 
   return (
-    <motion.div style={{ opacity }}>
+    <motion.div
+      style={{ opacity }}
+      className="flex justify-center items-center container-center h-screen"
+      ref={targetRef}
+    >
       <Silk
         speed={isBackgroundActive ? 5 : 0}
         scale={1}
@@ -20,7 +24,7 @@ function Hero({ setSilkReady }) {
         frameLoop={isBackgroundActive ? "always" : "demand"}
       />
 
-      <header className="py-30 container-center" ref={targetRef}>
+      <header>
         <motion.h1
           className="text-[clamp(3rem,8vw,6rem)] tracking-tighter leading-[0.95] text-shadow-[5px_5px_5px_rgba(153,106,177,0.18)] w-min mx-auto dark:text-shadow-[5px_5px_5px_rgba(0,0,0,0.8),0_0_40px_rgba(24,192,184,0.3)]"
           style={{ opacity: textOpacity }}
