@@ -1,10 +1,17 @@
 "use client";
 
 import Silk from "./Silk";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useHeroScroll } from "../_hooks/useHeroScroll";
+import { useSupportsWebGL } from "@/app/hooks/useSupportWebGL";
+import StaticHeroBackdrop from "./StaticHeroBackdrop";
 
-function Hero({ setSilkReady }) {
+function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+  const supportsWebGL = useSupportsWebGL();
+
+  const shouldUseSilk = supportsWebGL === true && !prefersReducedMotion;
+
   const { targetRef, opacity, isBackgroundActive, textOpacity } =
     useHeroScroll();
 
@@ -14,15 +21,18 @@ function Hero({ setSilkReady }) {
       className="flex justify-center items-center container-center h-screen"
       ref={targetRef}
     >
-      <Silk
-        speed={isBackgroundActive ? 5 : 0}
-        scale={1}
-        color="#FFC0CB"
-        noiseIntensity={0.3}
-        rotation={0}
-        onReady={() => setSilkReady(true)}
-        frameLoop={isBackgroundActive ? "always" : "demand"}
-      />
+      {shouldUseSilk ? (
+        <Silk
+          speed={isBackgroundActive ? 5 : 0}
+          scale={1}
+          color="#FFC0CB"
+          noiseIntensity={0.3}
+          rotation={0}
+          frameLoop={isBackgroundActive ? "always" : "demand"}
+        />
+      ) : (
+        <StaticHeroBackdrop />
+      )}
 
       <header>
         <motion.h1

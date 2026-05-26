@@ -7,8 +7,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="flex container-center py-10 z-10">
-      <div className="flex-1 space-y-2">
+    <footer className="flex container-center py-10 z-10 flex-wrap space-y-6 gap-2 sm:space-y-0">
+      <div className="w-full space-y-2 sm:flex-1">
         <h1 className="text-xl uppercase font-bold tracking-widest">AETHER</h1>
         <h2 className="text-lg">AI Design Intelligence System</h2>
         <p className="text-sm">

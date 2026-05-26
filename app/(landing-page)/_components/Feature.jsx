@@ -27,8 +27,9 @@ function Feature({ number, feature, description, img }) {
       >
         Feature #{number}
       </motion.p>
+
       <motion.h1
-        className="text-[5.5vw]/[3vh] sm:leading-[15vh] font-bold mb-4 overflow-hidden"
+        className="text-[7vw]/[9vh] sm:leading-[15vh] font-bold mb-4 overflow-hidden"
         style={{ scale: headerScale, translateY }}
       >
         {feature.split("").map((char, index) => {
@@ -44,12 +45,7 @@ function Feature({ number, feature, description, img }) {
       </motion.h1>
 
       <motion.div style={{ scale }}>
-        <Image
-          src={img || "design-reasoning.svg"}
-          alt="Design Reasoning"
-          width={100}
-          height={100}
-        ></Image>
+        <Image src={img} alt={feature} width={100} height={100}></Image>
       </motion.div>
 
       <motion.p

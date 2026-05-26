@@ -71,7 +71,7 @@ void main() {
 }
 `;
 
-const SilkPlane = forwardRef(function SilkPlane({ uniforms, onReady }, ref) {
+const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
   const { viewport } = useThree();
   const hasReportedReady = useRef(false);
 
@@ -86,8 +86,6 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms, onReady }, ref) {
 
     if (!hasReportedReady.current) {
       hasReportedReady.current = true;
-
-      onReady?.();
     }
   });
 
@@ -110,7 +108,6 @@ const Silk = ({
   color = "#8E6B9E",
   noiseIntensity = 1.5,
   rotation = 0,
-  onReady,
   frameLoop = "always",
 }) => {
   const meshRef = useRef();
@@ -133,7 +130,7 @@ const Silk = ({
       frameloop={frameLoop}
       className="fixed! opacity-70! -z-100! top-0 left-0 w-full h-screen!"
     >
-      <SilkPlane ref={meshRef} uniforms={uniforms} onReady={onReady} />
+      <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   );
 };
