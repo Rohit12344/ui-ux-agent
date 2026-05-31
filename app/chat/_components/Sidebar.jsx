@@ -1,15 +1,14 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React from "react";
 import Collapser from "./Collapser";
 
-function Sidebar({ isSideBarOpen, onSideBarOpen }) {
+function Sidebar({ isSideBarOpen, onSideBarOpen, onSetNewChat, chats }) {
   return (
     <div
-      className={`bg-primary-foreground z-10 absolute max-h-screen p-3 border-2 border-secondary space-y-4 sm:space-y-0 sm:static sm:flex sm:flex-col sm:gap-4 ${
+      className={`bg-primary-foreground z-10 absolute max-h-screen p-3 border-2 border-secondary space-y-4 lg:space-y-0 lg:static lg:flex lg:flex-col lg:gap-4 ${
         isSideBarOpen
-          ? "h-full sm:h-screen sm:w-[20vw]"
-          : "hidden sm:block sm:items-center"
+          ? "h-full w-[70vw] lg:h-screen sm:w-[40vw] lg:w-[20vw]"
+          : "hidden lg:block lg:items-center"
       }`}
     >
       <div className="flex justify-between items-center">
@@ -23,15 +22,22 @@ function Sidebar({ isSideBarOpen, onSideBarOpen }) {
           <Collapser isSideBarOpen={isSideBarOpen} />
         </div>
       </div>
-      <Button className={`w-full py-2`}>
+      <Button className={`w-full py-2 cursor-pointer`} onClick={onSetNewChat}>
         + {isSideBarOpen && "New Session"}
       </Button>
       {isSideBarOpen && (
-        <div className="w-full sm:h-full space-y-2 ">
+        <div className="w-full lg:h-full space-y-2 ">
           <h2>Today</h2>
-          <Button variant="outline" className="w-full py-2">
-            First Page Design
-          </Button>
+
+          {chats.map((chat, index) => (
+            <Button
+              key={index}
+              variant="outline"
+              className="w-full py-2 cursor-pointer"
+            >
+              {chat.title}
+            </Button>
+          ))}
         </div>
       )}
     </div>

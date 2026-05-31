@@ -37,9 +37,9 @@ Never add infrastructure before you've hit the wall that needs it.
 - [x] Configure TypeScript
 - [x] Configure Tailwind
 - [x] Install shadcn/ui
-- [ ] Build the two-column layout: sidebar left, main chat right
+- [x] Build the two-column layout: sidebar left, main chat right
 - [ ] Build the chat thread component (user bubble + Aether response area)
-- [ ] Build the input area with textarea + send button
+- [x] Build the input area with textarea + send button
 - [ ] Create `/api/chat` route using Anthropic SDK
 - [ ] Add `.env.local` with `ANTHROPIC_API_KEY`
 - [ ] Wire up streaming — response streams token by token into the UI
