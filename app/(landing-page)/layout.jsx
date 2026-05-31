@@ -4,7 +4,7 @@ import Footer from "./_components/Footer";
 
 function LandingPageLayout({ children }) {
   return (
-    <div className={`relative flex flex-col items-center`}>
+    <div className={`flex flex-col items-center`}>
       {<NavBar />}
       {children}
       {<Footer />}

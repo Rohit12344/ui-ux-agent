@@ -4,6 +4,7 @@ import AnimatedChar from "@/components/common/AnimatedChar";
 import { motion } from "motion/react";
 import useFeatureScroll from "../_hooks/useFeatureScroll";
 import Image from "next/image";
+import Iridescence from "./Iridescence";
 
 function Feature({ number, feature, description, img }) {
   const {
@@ -16,9 +17,10 @@ function Feature({ number, feature, description, img }) {
     featureTitleOpacity,
   } = useFeatureScroll();
 
+  // bg-linear-to-b from-background to-primary-foreground dark:bg-radial-[at_85%_25%] dark:from-primary dark:to-background
   return (
     <div
-      className="h-[150vh] last:h-screen w-full flex flex-col items-center justify-center gap-12 leading-9 font-medium bg-linear-to-b from-background to-primary-foreground bg-fixed dark:bg-radial-[at_85%_25%] dark:from-primary dark:to-background overflow-x-hidden z-10"
+      className="h-screen sm:h-[150vh] last:h-screen w-full flex flex-col items-center justify-center gap-12 leading-9 font-medium overflow-x-hidden bg-transparent"
       ref={targetRef}
     >
       <motion.p

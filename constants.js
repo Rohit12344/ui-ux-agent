@@ -2,7 +2,7 @@ export const features = [
   {
     feature: "Design Reasoning",
     description:
-      "Understand goals, users, context, and constraints before suggesting solutons.",
+      "Understand goals, users, context, and constraints before suggesting solutions.",
     img: "design-reasoning.svg",
   },
   {

@@ -1,10 +1,24 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import useResponsiveNavbar from "../_hooks/useResponsiveNavbar";
 
 function NavBar() {
+  const { scrollDirection } = useResponsiveNavbar();
+
   return (
-    <nav className="flex justify-between items-center container-center px-6 py-4 bg-transparent/80 backdrop-blur-lg translate-y-6 rounded-lg z-50">
+    <motion.nav
+      className="fixed flex justify-between items-center container-center px-6 py-4 bg-transparent/80 backdrop-blur-lg translate-y-6 rounded-lg z-10 border-primary border"
+      animate={{ translateY: scrollDirection === "down" ? -100 : 0 }}
+      transition={{
+        transitionY: 0,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+    >
       <span className="uppercase tracking-[0.6em]">Ather</span>
 
       <div className="font-semibold tracking-widest hidden md:flex md:gap-12">
@@ -29,7 +43,7 @@ function NavBar() {
       </div>
 
       <Button>Start Designing</Button>
-    </nav>
+    </motion.nav>
   );
 }
 

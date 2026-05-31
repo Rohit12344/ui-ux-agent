@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 import { motion } from "motion/react";
 
 function AnimatedWord({ word, lineHeight = "1.6rem" }) {
   return (
     <motion.span
-      className="inline-block"
+      className="inline-block text-[clamp(0.8rem,2vw,3rem)] font-bold "
       initial={{ translateY: lineHeight }}
       whileInView={{
         translateY: 0,
