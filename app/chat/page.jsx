@@ -18,13 +18,15 @@ function Page() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [isNewChat, setIsNewChat] = useState(true);
   const [activeChat, setActiveChat] = useState(null);
+  console.log(activeChat);
   return (
     <div className="flex min-h-screen max-w-screen relative">
       <Sidebar
         chats={chats}
         isSideBarOpen={isSideBarOpen}
-        onSetNewChat={() => setIsNewChat(true)}
+        onSetNewChat={setIsNewChat}
         onSideBarOpen={() => setIsSideBarOpen((prev) => !prev)}
+        onSelectChat={setActiveChat}
       />
 
       <div
@@ -33,6 +35,7 @@ function Page() {
         <Navbar
           isNewChat={isNewChat}
           onSideBarOpen={() => setIsSideBarOpen((prev) => !prev)}
+          title={activeChat?.title}
         />
         {isNewChat ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4">

@@ -2,7 +2,13 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Collapser from "./Collapser";
 
-function Sidebar({ isSideBarOpen, onSideBarOpen, onSetNewChat, chats }) {
+function Sidebar({
+  isSideBarOpen,
+  onSideBarOpen,
+  onSetNewChat,
+  onSelectChat,
+  chats,
+}) {
   return (
     <div
       className={`bg-primary-foreground z-10 absolute max-h-screen p-3 border-2 border-secondary space-y-4 lg:space-y-0 lg:static lg:flex lg:flex-col lg:gap-4 ${
@@ -22,7 +28,10 @@ function Sidebar({ isSideBarOpen, onSideBarOpen, onSetNewChat, chats }) {
           <Collapser isSideBarOpen={isSideBarOpen} />
         </div>
       </div>
-      <Button className={`w-full py-2 cursor-pointer`} onClick={onSetNewChat}>
+      <Button
+        className={`w-full py-2 cursor-pointer`}
+        onClick={() => onSetNewChat(true)}
+      >
         + {isSideBarOpen && "New Session"}
       </Button>
       {isSideBarOpen && (
@@ -34,6 +43,10 @@ function Sidebar({ isSideBarOpen, onSideBarOpen, onSetNewChat, chats }) {
               key={index}
               variant="outline"
               className="w-full py-2 cursor-pointer"
+              onClick={() => {
+                onSelectChat(chat);
+                onSetNewChat(false);
+              }}
             >
               {chat.title}
             </Button>
